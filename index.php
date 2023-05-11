@@ -3,6 +3,11 @@ require('autoload.php');
 require_once('helper.php');
 // _p($_GET);
 $attributes = [];
+// image generated link
+$image_rl = isset($_GET['image_rl']) && !empty($_GET['image_rl']) ? ($_GET['image_rl']) : "http://url2image00.local/";
+$attributes['image_url'] = $image_rl;
+
+// link that would be convert
 $url = isset($_GET['url']) && !empty($_GET['url']) ? ($_GET['url']) : "https://google.com";
 $url = removeHttp($url);
 $attributes['url'] = $url;
@@ -21,7 +26,7 @@ $attributes['bheight'] = $bheight;
 
 // image related some properties
 $ext = isset($_GET['image_type']) && !empty($_GET['image_type'])  ?  $_GET['image_type'] : 'png';
-$attributes['ext'] = $ext;
+$attributes['image_type'] = $ext;
 
 $quality = isset($_GET['quality']) && !empty($_GET['quality'])  ? $_GET['quality'] : '';
 $attributes['quality'] = $quality;
@@ -37,4 +42,4 @@ $url2image = new MyUrl2Image($attributes);
 // _p($url2image);
 
 $url2image->execute();
-_p($url2image->preview(), true);
+_p($url2image->preview('image'), true);

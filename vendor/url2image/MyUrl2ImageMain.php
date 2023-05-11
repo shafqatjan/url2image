@@ -10,7 +10,7 @@ class MyUrl2ImageMain
       public $image_type;
       public $filename;
       public $allowed_image_types = ["jpg", "jpeg", "png", "bmp"];
-      public $link = 'http://url2image.test/';
+      public $image_url = 'http://url2image.test/';
       public $url_characters = [
             '%20' => ' ',
             '%21' => '!',
@@ -43,7 +43,7 @@ class MyUrl2ImageMain
             foreach ($attributes as $field => $value) {
                   $this->{$field} = $value;
             }
-            $this->link = addHttp($_SERVER['SERVER_NAME']) . '/';
+            $this->image_url = addHttp($_SERVER['SERVER_NAME']) . '/';
       }
 
       function __set($name, $value)
@@ -66,15 +66,16 @@ class MyUrl2ImageMain
             }
             return null;
       }
+
       function setTypeForConversion($type, $val)
       {
             return !empty($val) ? "--$type $val" : '';
       }
+
       function getFileName()
       {
             return date('Y_m_d_H_i_s') . '_' . $this->algo . '.' . $this->image_type;
       }
-      
 
       function getUrl()
       {
@@ -94,6 +95,7 @@ class MyUrl2ImageMain
             // _p($url);
             return $url;
       }
+
       function getDir()
       {
             $folder = './images/';
@@ -129,10 +131,14 @@ class MyUrl2ImageMain
       {
             return "<br><img src='$this->filename' width='" . $this->width . "' height='" . $this->height . "'/>";
       }
-      function info()
+      function info($r = null)
       {
             $url = $this->getUrl();
-
-            return _p($this->algo . " URL: <a href='" . $url . "' target='_blank'>URL</a> has been converted to image: <a href='" . $this->link . $this->filename . "' target='_blank'>Image</a>");
+            $rtn = [
+                  "info" => $this->algo . " URL: <a href='" . $url . "' target='_blank'>URL</a> has been converted to image: <a href='" . $this->image_url . $this->filename . "' target='_blank'>Image</a>",
+                  "image_link" => $this->image_url . $this->filename,
+                  "image" => "<img src='$this->filename' width='" . $this->width . "' height='" . $this->height . "'/>"
+            ];
+            return $r == null ? $rtn : $rtn[$r];
       }
 }

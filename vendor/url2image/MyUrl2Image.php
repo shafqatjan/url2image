@@ -28,8 +28,8 @@ class MyUrl2Image
             $this->obj->execute();
       }
 
-      public function preview()
+      public function preview($image = null)
       {
-            $this->obj->preview();
+            return $this->obj->preview($image);
       }
 }
