@@ -1,9 +1,9 @@
 <?php
 require('autoload.php');
 require_once('helper.php');
-_p($_GET);
+// _p($_GET);
 $attributes = [];
-$url = isset($_GET['url']) && !empty($_GET['url']) ? ($_GET['url']) : "https://solar.greenpoweremc.com/v2/#/cooperative-solar-dashboard/ZW1jLXNvbGFyIzQxI2dvLXRvLWNvb3Bz/f865b1ff22819ed940a3504cbf18af86";
+$url = isset($_GET['url']) && !empty($_GET['url']) ? ($_GET['url']) : "https://google.com";
 $url = removeHttp($url);
 $attributes['url'] = $url;
 

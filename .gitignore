@@ -1,4 +1,5 @@
 images/*
-vendor/*
 grabit.php
 composer.lock
+vendor/grabzit
+vendor/composer
