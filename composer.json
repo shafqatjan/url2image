@@ -1,0 +1,11 @@
+{
+    "name": "shafqat/url2image",
+    "autoload": {
+        "psr-4": {
+            "Shafqat\\Url2image\\": "src/"
+        }
+    },
+    "require": {
+        "grabzit/grabzit": "3.5.2"
+    }
+}
