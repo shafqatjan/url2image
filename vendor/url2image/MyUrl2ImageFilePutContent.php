@@ -1,6 +1,8 @@
 <?php
 error_reporting(-1);
 ini_set('display_errors', 'On');
+ini_set('max_execution_time', -1); // Replace 60 with the number of seconds you want to set as the maximum execution time
+
 require_once('helper.php');
 require_once('MyUrl2ImageMain.php');
 class MyUrl2ImageFilePutContent extends MyUrl2ImageMain
@@ -24,9 +26,10 @@ class MyUrl2ImageFilePutContent extends MyUrl2ImageMain
         }
       function execute()
       {            
-            $url = $this->file_get_contents_curl($this->getUrl());
+            $data = $this->file_get_contents_curl($this->getUrl());
+            _p($data);
             $this->filename = $this->getDir() . $this->getFileName();
-            file_put_contents($this->filename, file_get_contents($url));
+            // file_put_contents($this->filename, $this->file_get_contents_curl($url));
             return $this->info();
       }
 }

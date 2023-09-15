@@ -26,10 +26,11 @@ class MyUrl2ImageExec extends MyUrl2ImageMain
       function execute()
       {
             $command = $this->command();
-            // _p($command);
+            _p($command);
+            $rs = null;
             exec($command, $output, $rs);
-            // shell_exec($command);
-            if (count($output) > 0)  _p([$rs, $output]);
+            // $output = shell_exec($command);
+            if ($output)  _p([$rs, $output]);
 
             return $this->info();
       }

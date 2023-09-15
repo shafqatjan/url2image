@@ -19,16 +19,21 @@ class MyUrl2ImageByGrabit extends MyUrl2ImageMain
       function execute()
       {
             // $this->grabzIt = new \GrabzIt\GrabzItClient("MmMxOTg0NGZlYzczNDFhOWFkYmUwODBjY2ZhMDYyYzA=", "Pz8/Fj9hZlwyPz8/Wj8EP3d5Pz8/VD8LVlg/Pz8aBAY=");//mine
-            $this->grabzIt = new \GrabzIt\GrabzItClient("MjU3MDMzMDZjYTlmNDkxZGE0Y2YyOTg5N2FmODE4YzE=", "Pz8/L015dj8+OXp1Pz8/bT4/HRw/P10/Nk97PVlEWS0="); //client
+            $this->grabzIt = new \GrabzIt\GrabzItClient("MjU3MDMzMDZjYTlmNDkxZGE0Y2YyOTg5N2FmODE4YzE=", "Pz8/L015dj8+OXp1Pz8/bT4/HRw/P10/Nk97PVlEWS0=", array(
+                  'cache' => true,
+                  'cache_dir' => './path/to/cache/directory',
+                  'cache_expiration' => 3600 // cache expiration time in seconds
+              )); //client
             // _p($this->attributes);
 
             $this->grabzItOptions = new \GrabzIt\GrabzItImageOptions(); //client
-            $this->grabzItOptions->setQuality($this->attributes['quality']);
-            $this->grabzItOptions->setWidth($this->attributes['width']);
-            $this->grabzItOptions->setHeight($this->attributes['height']);
-            // $this->grabzItOptions->setDelay(15);
-            $this->grabzItOptions->setBrowserWidth($this->attributes['bwidth']);
-            $this->grabzItOptions->setBrowserHeight($this->attributes['bheight']);
+            // $this->grabzItOptions->setQuality($this->attributes['quality']);
+            // $this->grabzItOptions->setWidth($this->attributes['width']);
+            // $this->grabzItOptions->setHeight($this->attributes['height']);
+            // // $this->grabzItOptions->setDelay(15);
+            // $this->grabzItOptions->setBrowserWidth($this->attributes['bwidth']);
+            // $this->grabzItOptions->setBrowserHeight($this->attributes['bheight']);
+            // $this->grabzItOptions->setAddress("sdfasdfasdfsfda");
             // _p($this->grabzItOptions);
 
             $url = $this->getUrl();
