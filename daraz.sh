@@ -18,7 +18,7 @@ git_aio () {
     git add -u .
     git add .
     git commit -m "${tmd}"
-    git pull origin master
+    git pull
     git push origin HEAD:master
 }
 git_aio
